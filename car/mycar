@@ -1,2 +1,3 @@
 a=int(input("Inserisci il  numero"))
 print(a)
+print(a**)
