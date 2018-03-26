@@ -1,43 +1,47 @@
-class car (object):
-    altezza=10                    #altezza macchina
-    larghezza=altezza*(3)             #larghezza macchina
-    coloreM=color(204,255,0)      #colore corpo auto
-    coloreR=color(0,0,0)          #colore ruote
 
+class Car(object):
     
-    
-    def __init__(self,x,y,speed,step):
-        self.x=x                  
+    def __init__(self, x, y):
+        self.x=x
         self.y=y
-        self.step=step
-        self.speed=speed
-        self.c=car.coloreM
-        self.r=car.coloreR
+        self.speedX=2
+        self.speedY=2
 
-        
-    #visualizzazione macchina sul display
+        self.c = color(random(255),0,0)
+
+
     def display(self):
         fill(self.c)
-        rect(self.x,self.y,car.larghezza,car.altezza)
-        fill(self.r)
-        rect(self.x+car.altezza/(5),self.y-car.larghezza/(10),car.larghezza*(0.3),car.altezza*(0.3))  
-        rect(self.x+car.altezza*(1.8),self.y-car.larghezza/(10),car.larghezza*(0.3),car.altezza*(0.3))
-        rect(self.x+car.altezza/(5),self.y+car.larghezza/(3),car.larghezza*(0.3),car.altezza*(0.3))
-        rect(self.x+car.altezza*(1.8),self.y+car.larghezza/(3),car.larghezza*(0.3),car.altezza*(0.3))
-
-
-            
-    #comandi            
-    def comandi(self,comando):
-        if (keyCode==UP and self.y>15):
-            self.y=self.y-self.step*self.speed
-        
-        elif (keyCode==DOWN and self.y<485):
-            self.y=self.y+self.step*self.speed
-        
-        elif (keyCode==LEFT and self.x>0):
-            self.x=self.x-self.step*self.speed
-        
-        elif (keyCode==RIGHT and self.x<470):
-            self.x=self.x+self.step*self.speed   
+        rect(self.x,self.y,30,10)
+        rect(self.x+2,self.y-3,10,3)
+        rect(self.x+18,self.y-3,10,3)
+        rect(self.x+2,self.y+10,10,3)
+        rect(self.x+18,self.y+10,10,3)
     
+    def comandi(self,comando):
+        if (comando == UP and self.y>0):
+            self.y-=self.speedY
+        elif (comando == DOWN and self.y<(height-30)):
+            self.y+=self.speedY
+        elif (comando == LEFT and self.x>0):
+            self.x-=self.speedX
+        elif (comando == RIGHT and self.x<(width-30)):
+            self.x+=self.speedX
+        
+    def comandiMouse(self,incrX,incrY):
+        if (incrY<0 and self.y>0):
+            self.y-=1
+        elif (incrY>0 and self.y<(height-30)):
+            self.y+=1
+        elif (incrX<0 and self.x>0):
+            self.x-=1
+        elif (incrX>0 and self.x<(width-30)):
+            self.x+=1
+    
+    def collisione(self,imprevisto):
+        if (abs(self.x-imprevisto.x)<50 and 
+            abs(self.y-imprevisto.y)<50):
+            print("collisione")
+            return(1)
+        else:
+            return(0)
