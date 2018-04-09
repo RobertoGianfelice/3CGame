@@ -5,7 +5,7 @@ from Macchina import car
 
 larghezzaSchermo=800
 altezzaSchermo=500
-mezzeria=mezz(0,1,1,60,20)
+mezzeria=mezz(0,1,1,60,20,"3C")
 imprevisto=ImprevistiClass(1)
 punteggio=Scritte(0,larghezzaSchermo/2,15,0,18)
 macchina=car(10,10,1,2)
