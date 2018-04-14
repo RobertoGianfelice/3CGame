@@ -1,4 +1,4 @@
-class car (object):
+ class car (object):
     altezza=10                    #altezza macchina
     larghezza=altezza*(3)             #larghezza macchina
     coloreM=color(204,255,0)      #colore corpo auto
@@ -24,7 +24,7 @@ class car (object):
         rect(self.x+car.altezza*(1.8),self.y-car.larghezza/(10),car.larghezza*(0.3),car.altezza*(0.3))
         rect(self.x+car.altezza/(5),self.y+car.larghezza/(3),car.larghezza*(0.3),car.altezza*(0.3))
         rect(self.x+car.altezza*(1.8),self.y+car.larghezza/(3),car.larghezza*(0.3),car.altezza*(0.3))
-
+        rect(self.x+car.altezza*(0.7),self.y+car.larghezza/(6.3),car.larghezza*(0.5),car.altezza*(0.3))
 
             
     #comandi            
@@ -40,4 +40,13 @@ class car (object):
         
         elif (keyCode==RIGHT and self.x<470):
             self.x=self.x+self.step*self.speed   
+            
+            
+    #collisione
+    def collisione (self,imprevisti):
+        if(abs(self.x-imprevisti.x)<30 and
+           abs(self.y-imprevisti.y)<16):
+            return True
+        else:
+            return False
     
