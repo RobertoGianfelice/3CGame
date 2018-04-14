@@ -10,14 +10,15 @@ class Scritte(object):
     def display(self):
         textSize(self.fontSize)
         fill(self.colore)
+        
+        
+        if self.colore=='green':
+            fill(135,255,84)
+        elif self.colore== 'red':
+            fill(255,7,7)
+        else:
+            fill(0)
         text(self.testo,self.x,self.y)
     
     def updateTesto(self,testo):
         self.testo=testo
-        
-        
-    
-    
-    def setPass(self,x,y):
-        self.x=x
-        self.y=y
