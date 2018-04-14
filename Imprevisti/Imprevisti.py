@@ -3,12 +3,11 @@ from Scritte import Scritte
 
 class Imprevisti(object):
     def __init__(self, speed, sizeImpr):
-        global imprevistiArray
+      
         self.speed = speed
         self.punteggio = 0
         self.sizeImpr = sizeImpr
-        
-        imprevistiArray = ['-20.png','-100.png','0.png','100.png','50.png','-60.png']
+        self.imprevistiArray = ['-20.png','-100.png','0.png','100.png','50.png','-60.png']
     
         
     
@@ -23,7 +22,7 @@ class Imprevisti(object):
                 self.speed += 0.15
                 
         image(imprevisto, self.x, self.y, self.sizeImpr, self.sizeImpr)
-        punteggioScritta.move(self.x + self.sizeImpr, self.y + (self.sizeImpr + 15)/2)
+        #punteggioScritta = Scritte(self.punteggio, self.x + self.sizeImpr, self.y + (self.sizeImpr + 15)/2, self.coloreScritta(), 15)
         
     def createNewImprevisto(self):
         global imprevisto
@@ -32,9 +31,9 @@ class Imprevisti(object):
         self.x = width-self.sizeImpr + random(500)
         self.y = random(height - self.sizeImpr) 
         
-        numeroImprevisto = int(random(len(imprevistiArray))) # Posizione dell'imprevisto all'interno di imprevistiArray
-        imprevisto = loadImage(imprevistiArray[numeroImprevisto]) #carica l'immagine dell'imprevisto
-        self.punteggio = imprevistiArray[numeroImprevisto].replace('.png', '') #siccome il  nome di ogni immagina rappresenta il punteggio dell'imprevisto, prendo il nome dell'imprevisto e rimuovo .png
+        numeroImprevisto = int(random(len(self.imprevistiArray))) # Posizione dell'imprevisto all'interno di imprevistiArray
+        imprevisto = loadImage(self.imprevistiArray[numeroImprevisto]) #carica l'immagine dell'imprevisto
+        self.punteggio = self.imprevistiArray[numeroImprevisto].replace('.png', '') #siccome il  nome di ogni immagina rappresenta il punteggio dell'imprevisto, prendo il nome dell'imprevisto e rimuovo .png
         punteggioScritta = Scritte(self.punteggio, self.x + self.sizeImpr, self.y + (self.sizeImpr + 15)/2, self.coloreScritta(), 15)
         
         
