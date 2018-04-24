@@ -1,4 +1,4 @@
-from scritte import Scritte
+from Scritte import Scritte
 class car (object):
                         #altezza macchina
     altezza=20
@@ -8,7 +8,7 @@ class car (object):
 
     
     
-    def __init__(self,x,y,speed,step,testo=''):
+    def __init__(self,x,y,speed,step,dimImpr=50,testo='3C'):
         self.x=x                  
         self.y=y
         self.step=step
@@ -16,8 +16,9 @@ class car (object):
         self.c=car.coloreM
         self.r=car.coloreR
         self.testo=testo
+        self.dimImpr=dimImpr
         
-        self.scritta=Scritte(self.testo,red,18)
+        self.scritta=Scritte(self.testo,"red",18)
 
 
         
@@ -61,10 +62,8 @@ class car (object):
     
     #collisione
     def collisione (self,imprevisti):
-        if(abs(self.x-imprevisti.x)<30 and
-           abs(self.y-imprevisti.y)<16):
+        if(abs(self.x-imprevisti.x)<self.dimImpr and
+           abs(self.y-imprevisti.y)<self.dimImpr):
             return True
         else:
             return False
-            
-        
