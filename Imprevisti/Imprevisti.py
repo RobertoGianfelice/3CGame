@@ -55,6 +55,12 @@ class Imprevisti(object):
             return 'Game Over'
         else: 
             self.createNewImprevisto()
+        
+    def getValue(self):
+        return int(self.punteggio)
+
+
+    
             
         
 
