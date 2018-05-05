@@ -32,7 +32,10 @@ class car (object):
         rect(self.x+car.altezza/(5),self.y+car.larghezza/(3),car.larghezza*(0.3),car.altezza*(0.3))
         rect(self.x+car.altezza*(1.8),self.y+car.larghezza/(3),car.larghezza*(0.3),car.altezza*(0.3))
 
-   
+
+    def updateSpeed(newSpeed):
+        self.speed=newSpeed
+
 
 
 
@@ -67,3 +70,4 @@ class car (object):
             return True
         else:
             return False
+     
