@@ -1,18 +1,18 @@
-
 from Scritte import Scritte
 
 class Imprevisti(object):
     
-    def __init__(self, speed, sizeImpr):
-      
+    def __init__(self, speed, sizeImpr, widthScreen = 1300, heightScreen = 800):
         self.speed = speed
         self.punteggio = 0
         self.sizeImpr = sizeImpr
         self.imprevistiArray = ['-20.png','-100.png','0.png','100.png','50.png','-60.png']
-        
         self.punteggioScritta = Scritte(self.punteggio,'', 15)
+        self.widthScreen = widthScreen
+        self.heightScreen = heightScreen
+        self.createNewImprevisto()
+       
         
-    
         
     def moveImprevisto(self):
         
@@ -22,7 +22,7 @@ class Imprevisti(object):
             if self.speed < 5:
                 self.speed += 0.15
                 
-        image(imprevisto, self.x, self.y, self.sizeImpr, self.sizeImpr)
+        image(self.imprevisto, self.x, self.y, self.sizeImpr, self.sizeImpr)
         
         colore = color(255)
         
@@ -40,55 +40,26 @@ class Imprevisti(object):
         
         
     def createNewImprevisto(self):
-        global imprevisto
-        
-        self.x = width-self.sizeImpr + random(500)
-        self.y = random(height - self.sizeImpr) 
+        self.x = self.widthScreen-self.sizeImpr + random(300)
+        self.y = random(200, self.heightScreen - self.sizeImpr) 
         
         numeroImprevisto = int(random(len(self.imprevistiArray))) # Posizione dell'imprevisto all'interno di imprevistiArray
-        imprevisto = loadImage(self.imprevistiArray[numeroImprevisto]) #carica l'immagine dell'imprevisto
+        self.imprevisto = loadImage(self.imprevistiArray[numeroImprevisto]) #carica l'immagine dell'imprevisto
         self.punteggio = self.imprevistiArray[numeroImprevisto].replace('.png', '') #siccome il  nome di ogni immagina rappresenta il punteggio dell'imprevisto, prendo il nome dell'imprevisto e rimuovo .png
+        self.isImprUsed = False
         
-        
-    def collisione(self):
-        if self.punteggio == '':
-            return 'Game Over'
-        else: 
-            self.createNewImprevisto()
-        
-    def getValue(self):
+    def getValue(self):  
         return int(self.punteggio)
+    
+    def collisione(self): 
+        self.isImprUsed = True
+        self.x = self.widthScreen
+        self.y = random(self.heightScreen - self.sizeImpr)         
+        
+        
+    def isUsed(self):  
+        return self.isImprUsed
 
 
-    
-            
-        
-
-            
-            
-        
-    
-        
-    
-        
-    
-    
-        
-        
-        
-        
-            
-        
-        
-    
-    
-    
-            
-        
-        
-        
-    
-        
-        
         
     
