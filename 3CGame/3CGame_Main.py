@@ -1,4 +1,4 @@
-from Mezzeria import mezz
+from MEzzeria import mezz
 from Imprevisti import Imprevisti
 from Scritte import Scritte
 from Macchina import car
@@ -7,13 +7,15 @@ larghezzaSchermo=800
 altezzaSchermo=500
 speed=4
 dimImprevisto=larghezzaSchermo/20
+
 mezzeria=mezz(0,1,speed,larghezzaSchermo*9.0/100,altezzaSchermo*4.0/100)
 ListaImpr=[]
-imprevisto=Imprevisti(speed,dimImprevisto)
+imprevisto=Imprevisti(speed,dimImprevisto,larghezzaSchermo,altezzaSchermo)
 ListaImpr.append(imprevisto)
 punteggio=Scritte('0','green',18)
 
 macchina=car(10,10,speed*2,1)
+fineGioco=0
 
 def setup():
   size(larghezzaSchermo,altezzaSchermo)
@@ -23,6 +25,8 @@ def setup():
   frameRate(30)
 
 def draw():
+  global fineGioco
+
   background(255)
   
   punteggio.display()
@@ -37,12 +41,19 @@ def draw():
   if (keyPressed):
       macchina.comandi(key)
 
-  for impr in ListaImpr:
-    if (macchina.collisione(impr)):
-      punteggio.updateTesto(str(int(punteggio.testo)+impr.getValue()))
-      impr.collisione()
-      
-  
-  
-  
-  
+  if (fineGioco==0):
+
+    for impr in ListaImpr:
+        if (macchina.collisione(impr)):
+            if (impr.getValue()==0):
+                    fineGioco=True
+            else:
+                impr.collisione()
+                punteggio.updateTesto(str(int(punteggio.testo)+impr.getValue()))
+                if  len(ListaImpr) < 5:
+                    imprevisto = Imprevisti(speed,dimImprevisto, larghezzaSchermo, altezzaSchermo)
+                    ListaImpr.append(imprevisto)
+  else:
+        gameOver=Scritte('Game Over\nScore='+punteggio.testo,'red',100)
+        gameOver.setPos(10,altezzaSchermo/2)
+        gameOver.display()
