@@ -1,4 +1,4 @@
- class Scritte(object):
+class Scritte(object):
     
     def __init__(self,testo, colore, fontSize):   # quando inizializziamo una classe dobbiamo dire 'cosa volgiamo scrivere' il colore che gli vogliamo dare con 'red black or green' e la grandezza del testo
         self.testo=testo
