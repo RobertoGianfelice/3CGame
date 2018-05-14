@@ -1,25 +1,25 @@
-
-from MEzzeria import mezz
+from Mezzeria import mezz
 from Imprevisti import Imprevisti
 from Scritte import Scritte
 from Macchina import car
 
 larghezzaSchermo=800
 altezzaSchermo=500
-speed=4
+speed=2.5
 dimImprevisto=larghezzaSchermo/20
-testoMezzeria="3C LSA"
+SCRITTA_MACCHINA="3CLSA"
+SCRITTA_MEZZERIA="CDS.18"
 
 altezzaStriscia=500
 larghezzaStriscia=800
 
-mezzeria=mezz(0,1,spped,larghezzaStriscia,altezzaStriscia,testoMezzeria)
+mezzeria=mezz(0,1,speed,larghezzaStriscia,altezzaStriscia,SCRITTA_MEZZERIA)
 ListaImpr=[]
 imprevisto=Imprevisti(speed,dimImprevisto,larghezzaSchermo,altezzaSchermo)
 ListaImpr.append(imprevisto)
-punteggio=Scritte('0','green',18)
+punteggio=Scritte('0','black',18)
 
-macchina=car(10,10,speed*2,1)
+macchina=car(10,10,speed*2,1,50,SCRITTA_MACCHINA)
 fineGioco=0
 
 def setup():
@@ -44,9 +44,9 @@ def draw():
   macchina.display()
   
   if (keyPressed):
-      macchina.comandi(key)
+        macchina.comandi(key)
 
-  if (fineGioco==0):
+  if (fineGioco==0 and int(punteggio.testo)>=0):
 
     for impr in ListaImpr:
         if (macchina.collisione(impr)):
