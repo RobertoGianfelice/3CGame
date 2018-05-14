@@ -31,20 +31,12 @@ class car (object):
         rect(self.x+car.altezza*(1.8),self.y-car.larghezza/(10),car.larghezza*(0.3),car.altezza*(0.3))
         rect(self.x+car.altezza/(5),self.y+car.larghezza/(3),car.larghezza*(0.3),car.altezza*(0.3))
         rect(self.x+car.altezza*(1.8),self.y+car.larghezza/(3),car.larghezza*(0.3),car.altezza*(0.3))
-
+        self.scritta.setPos(self.x + 3,self.y + 17)
+        self.scritta.display()
 
     def updateSpeed(newSpeed):
         self.speed=newSpeed
 
-
-
-
-
-
-
-        self.scritta.setPos(self.x + 17,self.y + 17)
-        
-        self.scritta.display()
     
     
     #comandi            
