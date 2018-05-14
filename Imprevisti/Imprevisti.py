@@ -46,20 +46,18 @@ class Imprevisti(object):
         numeroImprevisto = int(random(len(self.imprevistiArray))) # Posizione dell'imprevisto all'interno di imprevistiArray
         self.imprevisto = loadImage(self.imprevistiArray[numeroImprevisto]) #carica l'immagine dell'imprevisto
         self.punteggio = self.imprevistiArray[numeroImprevisto].replace('.png', '') #siccome il  nome di ogni immagina rappresenta il punteggio dell'imprevisto, prendo il nome dell'imprevisto e rimuovo .png
-        self.isImprUsed = False
+        
         
     def getValue(self):  
         return int(self.punteggio)
     
     def collisione(self): 
-        self.isImprUsed = True
+        
         self.x = self.widthScreen
-        self.y = random(self.heightScreen - self.sizeImpr)         
+        self.y = random(self.heightScreen - self.sizeImpr)       
         
-        
-    def isUsed(self):  
-        return self.isImprUsed
-
+    def updateSpeed(self, newSpeed):
+        self.speed = newSpeed
 
         
     
