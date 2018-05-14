@@ -1,3 +1,4 @@
+
 from MEzzeria import mezz
 from Imprevisti import Imprevisti
 from Scritte import Scritte
@@ -7,8 +8,12 @@ larghezzaSchermo=800
 altezzaSchermo=500
 speed=4
 dimImprevisto=larghezzaSchermo/20
+testoMezzeria="3C LSA"
 
-mezzeria=mezz(0,1,speed,larghezzaSchermo*9.0/100,altezzaSchermo*4.0/100)
+altezzaStriscia=500
+larghezzaStriscia=800
+
+mezzeria=mezz(0,1,spped,larghezzaStriscia,altezzaStriscia,testoMezzeria)
 ListaImpr=[]
 imprevisto=Imprevisti(speed,dimImprevisto,larghezzaSchermo,altezzaSchermo)
 ListaImpr.append(imprevisto)
