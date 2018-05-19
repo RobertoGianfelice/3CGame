@@ -1,11 +1,11 @@
 from Mezzeria import mezz
 from Imprevisti import Imprevisti
 from Scritte import Scritte
-from Macchina import car
+from Car import car
 
 larghezzaSchermo=800
 altezzaSchermo=500
-speed=2.5
+speed=1.5
 dimImprevisto=larghezzaSchermo/20
 SCRITTA_MACCHINA="3CLSA"
 SCRITTA_MEZZERIA="CDS.18"
@@ -35,14 +35,22 @@ def draw():
   background(255)
   
   punteggio.display()
+  newSpeed=min(8,int(int(punteggio.testo)/100+2))
+  mezzeria.updateSpeed(newSpeed)
+  macchina.updateSpeed(newSpeed+2)
+
+
   mezzeria.move()
   mezzeria.display()
 
   for impr in ListaImpr:
+      impr.updateSpeed(newSpeed)
+
       impr.moveImprevisto()
 
   macchina.display()
   
+
   if (keyPressed):
         macchina.comandi(key)
 
