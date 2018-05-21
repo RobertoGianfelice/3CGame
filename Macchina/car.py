@@ -34,7 +34,7 @@ class car (object):
         self.scritta.setPos(self.x + 3,self.y + 17)
         self.scritta.display()
 
-    def updateSpeed(newSpeed):
+    def updateSpeed(self,newSpeed):
         self.speed=newSpeed
 
     
